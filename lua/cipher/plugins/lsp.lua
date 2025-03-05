@@ -26,6 +26,7 @@ return {
             cmp_lsp.default_capabilities())
 
         require("mason").setup()
+        require'lspconfig'.volar.setup{}
         require("mason-lspconfig").setup({
             ensure_installed = {
                 "lua_ls",

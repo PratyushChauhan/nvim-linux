@@ -13,6 +13,13 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
     end
 })
+-- Allow pressing Enter to jump to a reference in quickfix list
+vim.api.nvim_create_autocmd("BufWinEnter", {
+    pattern = "quickfix",
+    callback = function()
+        vim.keymap.set("n", "<CR>", "<CR>", { buffer = true, silent = true })
+    end
+})
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
